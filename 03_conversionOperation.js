@@ -30,8 +30,8 @@ let value = 4
 let negValue = -value
 console.log(negValue) // -4
 
-console.log(2 + 2) // 4
+console.log(2 + 2) // 4 => number addition
 console.log("2" + "2") // 22 => string concatenation
 console.log(1 + 2 + "2") // 32 => string concatenation
-console.log("2" + 2 + 1) // 221 => string concatenation
+console.log("2" + 2 + 1) // 22 => string concatenation
 
