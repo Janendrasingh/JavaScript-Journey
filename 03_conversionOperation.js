@@ -22,3 +22,16 @@ let someNumber = 34
 let someString = String(someNumber)
 console.log(typeof someString) // string
 console.log(someString) // "34"
+
+
+// *************************** Operations ******************************//
+
+let value = 4
+let negValue = -value
+console.log(negValue) // -4
+
+console.log(2 + 2) // 4
+console.log("2" + "2") // 22 => string concatenation
+console.log(1 + 2 + "2") // 32 => string concatenation
+console.log("2" + 2 + 1) // 221 => string concatenation
+
