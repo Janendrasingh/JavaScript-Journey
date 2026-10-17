@@ -1,0 +1,17 @@
+// Stack memory is used for static memory allocation, which includes local variables and function call management. 
+// It operates in a last-in, first-out (LIFO) manner, meaning that the most recently allocated memory is the first 
+// to be deallocated. This makes stack memory very fast and efficient for managing function calls and local variables.
+// whenever we declare Primitive datatype it means, we getting the copy of the value and stored in stack memory. 
+// So, when we change the value of a primitive datatype, it does not affect the original value. 
+// For example, if we have a variable x with a value of 10 and we assign it to another variable y, 
+// changing the value of y will not affect the value of x.
+
+
+// Heap memory, on the other hand, is used for dynamic memory allocation. 
+// It allows for the allocation of memory at runtime, which can be useful for data structures that need to grow 
+// or shrink in size. However, heap memory management is more complex and slower than stack memory, 
+// as it requires manual allocation and deallocation of memory using functions like malloc() and free() in C/C++. 
+// Additionally, improper management of heap memory can lead to memory leaks and fragmentation.
+// so whenever we declare Non-primitive datatype it means, we getting the reference of the value and stored in heap memory.
+// means original value is stored in heap memory
+
