@@ -43,3 +43,18 @@ console.log(Object.keys(tinderUser)); // ["id", "name", "isLoggedIn"] (getting t
 console.log(Object.values(tinderUser)); // ["123abc", "Janendra", false] (getting the values of the tinderUser object)
 console.log(Object.entries(tinderUser)); // [["id", "123abc"], ["name", "Janendra"], ["isLoggedIn", false]] (getting the key-value pairs of the tinderUser object)
 console.log(tinderUser.hasOwnProperty("name")); // true (checking if the tinderUser object has the property "name")
+
+
+const course = {
+    courseName: "JavaScript",
+    price: "999",
+    courseInstructor: "Jai Singh",
+}
+course.courseInstructor = "Janendra Singh"; // Modifying the courseInstructor property of the course object
+const {} = course; // Destructuring the course object
+const {courseName} = course; // Destructuring the course object to get the courseName property
+const {price: coursePrice} = course; // Destructuring the course object to get the price property and renaming it to coursePrice
+console.log(courseName); // JavaScript
+console.log(coursePrice);
+// Destructuring in JavaScript is a feature that allows you to extract values from arrays or 
+// properties from objects and store them in variables easily.
