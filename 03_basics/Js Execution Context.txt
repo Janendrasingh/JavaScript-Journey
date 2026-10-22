@@ -417,3 +417,80 @@ Call Stack = The mechanism that tracks active execution.
 ============================================================
 END OF NOTES
 ============
+
+14. INTERVIEW QUESTIONS ON EXECUTION CONTEXT
+    ==================================================
+
+Here are five important interview questions you should be able to answer.
+
+## Q1. WHAT IS AN EXECUTION CONTEXT?
+
+Answer:
+An execution context is the environment in which JavaScript code is evaluated and executed. It keeps track of relevant information, such as variable and function bindings, scope, and the current execution state.
+
+## Q2. WHAT ARE THE TWO MAIN PHASES OF AN EXECUTION CONTEXT?
+
+Answer:
+The two phases are:
+
+1. Creation (Initialization) Phase:
+   JavaScript establishes the execution environment and prepares variable and function bindings. The behavior depends on the type of declaration.
+
+2. Execution Phase:
+   JavaScript executes statements, evaluates expressions, assigns values, and performs operations.
+
+## Q3. WHAT IS THE DIFFERENCE BETWEEN AN EXECUTION CONTEXT AND THE CALL STACK?
+
+Answer:
+An execution context provides the environment in which JavaScript code runs, while the call stack keeps track of active execution contexts and function calls.
+
+In simple words:
+
+* Execution Context = The environment where code executes.
+* Call Stack = The structure that tracks which execution context is currently active.
+
+## Q4. WHAT IS HOISTING?
+
+Answer:
+Hoisting describes how JavaScript processes declarations before their corresponding statements are reached during execution.
+
+The behavior depends on the declaration type:
+
+* var: The variable is initialized with undefined during the creation phase.
+* let and const: The bindings are created but remain uninitialized until their declarations are evaluated. Accessing them earlier causes a ReferenceError because they are in the Temporal Dead Zone (TDZ).
+* Function declarations: They can generally be called before their position in the code.
+
+## Q5. WHAT HAPPENS WHEN A FUNCTION CALLS ANOTHER FUNCTION?
+
+Answer:
+When a function calls another function, JavaScript creates an execution context for the called function and places it on top of the call stack.
+
+The called function executes first. When it finishes and returns, its execution context is removed from the call stack, and execution resumes in the calling function.
+
+Example:
+
+function first() {
+console.log("First function started");
+second();
+console.log("First function ended");
+}
+
+function second() {
+console.log("Second function executed");
+}
+
+first();
+
+Output:
+First function started
+Second function executed
+First function ended
+
+# KEY POINTS TO REMEMBER
+
+1. An execution context is the environment in which JavaScript code executes.
+2. Execution contexts involve setting up bindings and executing code.
+3. The call stack tracks active execution contexts.
+4. Hoisting behavior differs between var, let, const, and function declarations.
+5. A function call creates a new function execution context.
+6. When a function returns, its execution context is removed from the call stack.
