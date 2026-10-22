@@ -1,137 +1,229 @@
+============================================================
+JAVASCRIPT EXECUTION CONTEXT
+============================
+
+## TABLE OF CONTENTS
+
 1. What is an Execution Context?
+2. Types of Execution Context
+   A. Global Execution Context (GEC)
+   B. Function Execution Context (FEC)
+   C. Eval Execution Context
+3. The Two Main Phases of JavaScript Execution
+   A. Creation Phase
+   B. Execution Phase
+4. Execution Context vs. Call Stack
+5. Important Points to Remember
 
-An Execution Context is an environment in which JavaScript code is evaluated and executed.
+============================================================
 
-Whenever JavaScript executes code, it needs to keep track of things such as:
+1. WHAT IS AN EXECUTION CONTEXT?
+   ============================================================
 
-Variables and their values.
-Functions and how they are called.
-The scope in which variables are accessible.
-The current execution flow.
+## Definition:
+
+An Execution Context is an environment in which JavaScript
+code is evaluated and executed.
+
+Whenever JavaScript executes code, it needs to keep track of:
+
+1. Variables and their values.
+2. Functions and how they are called.
+3. The scope in which variables are accessible.
+4. The current execution flow.
 
 JavaScript uses an execution context to manage this information.
 
-Real-life example
+## REAL-LIFE EXAMPLE
 
-Imagine you are taking an exam.
+Imagine you are taking an examination.
+
 You have:
 
-An examination room.
-A question paper.
-A place to write your answers.
-Rules that determine what you can do.
+* An examination room.
+* A question paper.
+* A place to write your answers.
+* Rules that determine what you can do.
 
-Similarly, JavaScript creates an environment to manage and execute your code.
+Similarly, JavaScript creates an environment to manage and
+execute your code.
 
-Consider this example:
+## EXAMPLE
+
 let name = "Janendra";
 
 function greet() {
-    let message = "Hello";
-    console.log(message, name);
+let message = "Hello";
+console.log(message, name);
 }
 
 greet();
+
+## EXPLANATION
+
 JavaScript must keep track of:
 
-name and its value.
-The definition of greet().
-The local variable message when greet() executes.
-The values that need to be printed.
+1. The variable 'name' and its value.
+2. The definition of the 'greet()' function.
+3. The local variable 'message' when 'greet()' executes.
+4. The values that need to be printed.
 
 The execution context helps JavaScript manage these things.
 
-2. Types of Execution Context in JavaScript
+## OUTPUT
+
+Hello Janendra
+
+============================================================
+2. TYPES OF EXECUTION CONTEXT IN JAVASCRIPT
+===========================================
 
 There are three commonly discussed categories:
 
-Global Execution Context (GEC)
-Function Execution Context (FEC)
-Eval Execution Context
+1. Global Execution Context (GEC)
+2. Function Execution Context (FEC)
+3. Eval Execution Context
 
-Let's understand each one.
+---
 
-A. Global Execution Context (GEC)
+## A. GLOBAL EXECUTION CONTEXT (GEC)
 
-The Global Execution Context is created when JavaScript begins executing a script.
+## Definition:
+
+The Global Execution Context is established when JavaScript
+begins executing a script.
+
+Example:
+
 let a = 10;
 const b = 20;
 
 function add() {
-    console.log(a + b);
+console.log(a + b);
 }
 
 add();
-Before executing the code line by line, JavaScript establishes the global execution environment.
 
-Q. What about this?
+## EXPLANATION
 
-In a classic browser script, the global this value is generally window.
+Before executing the statements normally, JavaScript
+establishes the global execution environment.
+
+The global environment keeps track of global declarations
+and provides the environment for executing global code.
+
+## IMPORTANT QUESTION: WHAT ABOUT 'this'?
+
+In a browser's classic script, the global 'this' value is
+generally the 'window' object.
+
+Example:
 
 console.log(this);
 
-In a browser's classic script, this typically prints the Window object.
+## Output:
 
-However, this behavior depends on the execution environment and script type. For example, top-level this behaves differently in JavaScript modules and in Node.js.
+Window
 
-Remember: The Global Execution Context is the starting execution context for a JavaScript script.
+## IMPORTANT:
 
-B. Function Execution Context (FEC)
-
-Whenever a function is called, JavaScript creates a new Function Execution Context for that invocation.
-
-Consider:
-
-function greet() {
-    let message = "Hello";
-    console.log(message);
-}
-
-greet();
-greet();
-
-What happens here?
-
-JavaScript creates the global execution context.
-It registers the function definition.
-It encounters greet().
-A Function Execution Context is created for that call.
-The function executes.
-Its execution context is removed from the active call stack when the function returns.
-The second greet() creates another Function Execution Context.
-Important: Calling a function multiple times creates separate execution contexts for those invocations, even though they execute the same function definition.
-
-C. Eval Execution Context
-
-JavaScript also has a special execution context associated with the eval() function.
+The value of 'this' depends on the execution environment
+and script type.
 
 For example:
 
+* In a browser's classic script, top-level 'this' is
+  generally 'window'.
+* In a JavaScript ES module, top-level 'this' is 'undefined'.
+* Node.js has its own environment-specific behavior.
+
+## Remember:
+
+The Global Execution Context is the starting execution
+context for a JavaScript script.
+
+---
+
+## B. FUNCTION EXECUTION CONTEXT (FEC)
+
+## Definition:
+
+Whenever a function is called, JavaScript creates a new
+Function Execution Context for that invocation.
+
+Example:
+
+function greet() {
+let message = "Hello";
+console.log(message);
+}
+
+greet();
+greet();
+
+## WHAT HAPPENS HERE?
+
+1. JavaScript establishes the global execution context.
+2. It processes the function declaration.
+3. It encounters the first 'greet()' call.
+4. A Function Execution Context is created for that call.
+5. The function executes.
+6. When the function returns, its execution context is
+   removed from the active call stack.
+7. The second 'greet()' call creates another Function
+   Execution Context.
+
+## IMPORTANT:
+
+Calling a function multiple times creates separate
+execution contexts for those invocations, even though
+they execute the same function definition.
+
+Each invocation has its own local execution environment.
+
+---
+
+## C. EVAL EXECUTION CONTEXT
+
+JavaScript also has a special execution context associated
+with the 'eval()' function.
+
+Example:
+
 eval("console.log('Hello from eval')");
 
-Output:
+## OUTPUT
 
 Hello from eval
 
-Direct calls to eval() can execute JavaScript code within the surrounding execution environment and have special scoping behavior.
+## EXPLANATION
 
-However, eval() is rarely needed in normal application development. It can create security and debugging problems, so avoid it unless you have a specific reason to use it.
+Direct calls to 'eval()' can execute JavaScript code within
+the surrounding execution environment and have special
+scoping behavior.
 
+However, 'eval()' is rarely needed in normal application
+development.
 
-3. The Two Main Phases of JavaScript Execution
+It can create security and debugging problems, so avoid
+using it unless you have a specific reason to do so.
 
-This is the most important part of the topic.
+============================================================
+3. THE TWO MAIN PHASES OF JAVASCRIPT EXECUTION
+==============================================
 
-When JavaScript creates an execution context, two concepts are especially important:
+Two important concepts help explain how JavaScript
+initializes and executes code:
 
-Creation Phase
-Execution Phase
+1. Creation Phase
+2. Execution Phase
 
-Let's understand them using a simple example.
+## EXAMPLE
+
 var a = 10;
 
 function greet() {
-    console.log("Hello");
+console.log("Hello");
 }
 
 var b = 20;
@@ -141,78 +233,187 @@ console.log(b);
 
 greet();
 
-Phase 1: Creation Phase
+---
 
-Before executing the statements normally, JavaScript establishes the execution environment and processes declarations according to their type.
-Why does a initially have the value undefined in this simplified model?
+## A. CREATION PHASE
 
-Because var declarations are initialized to undefined when their execution context is initialized.
+Before executing the statements normally, JavaScript
+establishes the execution environment and processes
+declarations according to their type.
 
-The function declaration is also available before the program reaches its textual position.
+For this example, we can simplify the initial environment
+as follows:
 
-This behavior is commonly associated with hoisting.
+## GLOBAL EXECUTION CONTEXT
 
-Phase 2: Execution Phase
+a      -> undefined
+greet  -> function definition
+b      -> undefined
+
+## WHY IS 'a' INITIALLY UNDEFINED?
+
+Because 'var' declarations are initialized to 'undefined'
+when their execution context is initialized.
+
+Function declarations are also available before execution
+reaches their textual position.
+
+This behavior is commonly associated with HOISTING.
+
+## IMPORTANT:
+
+This is a simplified model for understanding 'var' and
+function declarations. 'let' and 'const' have different
+initialization behavior.
+
+---
+
+## B. EXECUTION PHASE
 
 Now JavaScript executes the statements.
 
-First:
+## STEP 1:
+
+Code:
 
 var a = 10;
 
-The value of a becomes 10.
+Explanation:
+The value of 'a' becomes 10.
 
-Next:
+## STEP 2:
+
+Code:
 
 function greet() {
-    console.log("Hello");
+console.log("Hello");
 }
 
-The function was already established during initialization, so JavaScript proceeds through its declaration.
+Explanation:
+The function declaration was already processed during
+initialization. JavaScript continues executing the program.
 
-Next:
+## STEP 3:
+
+Code:
 
 var b = 20;
 
-The value of b becomes 20.
+Explanation:
+The value of 'b' becomes 20.
 
-Then:
+## STEP 4:
+
+Code:
 
 console.log(a);
 console.log(b);
 
-Output:
+## OUTPUT
 
 10
 20
 
-Finally:
+## STEP 5:
+
+Code:
 
 greet();
 
-The function is invoked, creating a Function Execution Context.
+Explanation:
+The function is invoked, creating a Function Execution
+Context for that invocation.
 
-Output:
+## OUTPUT
 
 Hello
-Complete output
+
+## COMPLETE OUTPUT
+
 10
 20
 Hello
 
-Important distinction: JavaScript does not simply execute every line twice. The creation phase prepares the environment; the execution phase evaluates statements and performs their operations.
+## IMPORTANT DISTINCTION
 
-Also, let and const behave differently from var: they are initialized differently and cannot be accessed before initialization. We will examine that next.
+JavaScript does not simply execute every line twice.
 
+The creation phase prepares the execution environment.
+The execution phase evaluates statements and performs
+their operations.
 
-Remember the difference
+Also, 'let' and 'const' behave differently from 'var':
+they cannot be accessed before initialization.
 
-Execution Context	                                                               Call Stack
-1. Provides an environment for executing code	                    1. Tracks active execution contexts and function calls
-2. Contains information about variables, scope, 
-and execution state	                                                2. Determines which function is currently executing
-3. Created for global code and function invocations	                3. Pushes and pops active execution contexts
+============================================================
+4. EXECUTION CONTEXT VS. CALL STACK
+===================================
+
+These concepts are related, but they are not the same.
+
+## EXECUTION CONTEXT
+
+1. Provides an environment for executing code.
+2. Manages information such as variable bindings, scope,
+   and execution state.
+3. Is established for global code and function invocations.
+
+## CALL STACK
+
+1. Tracks active function calls and execution contexts.
+2. Determines which function is currently executing.
+3. Uses the Last In, First Out (LIFO) principle.
+4. Pushes new execution contexts when functions are called
+   and removes them when functions return.
+
+## COMPARISON TABLE
+
+Execution Context:
+Provides the environment in which code executes.
+
+Call Stack:
+Tracks active execution contexts and function calls.
+
+## EASY WAY TO REMEMBER
 
 Execution Context = The environment.
 
 Call Stack = The mechanism that tracks active execution.
+
+============================================================
+5. IMPORTANT POINTS TO REMEMBER
+===============================
+
+1. An Execution Context is an environment in which
+   JavaScript code is evaluated and executed.
+
+2. The three commonly discussed categories are:
+
+   * Global Execution Context
+   * Function Execution Context
+   * Eval Execution Context
+
+3. The creation phase establishes the execution environment
+   and processes declarations according to JavaScript rules.
+
+4. The execution phase evaluates statements and performs
+   operations.
+
+5. Function calls create new Function Execution Contexts.
+
+6. The Call Stack tracks active function calls and
+   execution contexts.
+
+7. Hoisting describes observable behavior resulting from
+   how declarations are processed and initialized.
+
+8. 'var' is initialized to 'undefined' during initialization.
+
+9. 'let' and 'const' cannot be accessed before initialization.
+
+10. The scope chain allows JavaScript to find variables
+    in the current and outer lexical environments.
+
+============================================================
+END OF NOTES
+============
