@@ -1,0 +1,35 @@
+body {
+margin: 0;
+}
+
+nav {
+display: flex;
+justify-content: center;
+gap: 20px;
+padding: 20px;
+}
+
+nav a {
+color: white;
+text-decoration: none;
+}
+
+.center {
+display: flex;
+height: 80vh;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+#banner {
+font-size: 25px;
+margin-bottom: 10px;
+}
+
+#clock {
+font-size: 40px;
+background-color: orange;
+padding: 20px 50px;
+border-radius: 10px;
+}
