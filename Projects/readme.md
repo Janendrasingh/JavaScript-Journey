@@ -121,5 +121,3 @@ Each project focuses on a different set of concepts, helping me build a stronger
 ---
 
 ⭐ **If you find this repository helpful, consider giving it a star!**
-
-**Happy Coding! 💻**
