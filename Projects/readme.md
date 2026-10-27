@@ -78,6 +78,23 @@ An interactive number-guessing game in which the player tries to guess a randoml
 
 ---
 
+5. 🎨 Unlimited Colors
+
+**Folder:**  `P5-Unlimited-Colors`
+
+A simple JavaScript project that automatically changes the webpage's background color at regular intervals using the START and STOP buttons.
+
+**Features:**
+
+* Generate random background colors.
+* Start automatic color changes using the START button.
+* Stop color changes using the STOP button.
+* Change the background color at regular intervals.
+
+**Concepts Learned:** Math.random(), Math.floor(), DOM manipulation, event handling, setInterval(), clearInterval(), functions, and asynchronous JavaScript.
+
+---
+
 ## 🛠️ Technologies Used
 
 * **HTML5** — Structure of the webpages.
