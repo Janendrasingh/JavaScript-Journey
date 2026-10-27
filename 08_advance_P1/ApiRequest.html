@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Request</title>
+  </head>
+  <body style="background-color: rgb(84, 101, 117); color: aliceblue">
+    <h2>
+      0. UNSENT Client has been created. open() not called yet. <br />
+      1. OPENED open() has been called. <br />
+      2. HEADERS_RECEIVED send() has been called, and headers and status are
+      available.<br />
+      3. LOADING Downloading; responseText holds partial data.<br />
+      4. DONE The operation is complete.
+    </h2>
+  </body>
+  <script>
+    const requestURL = "https://api.github.com/users/janendrasingh";
+    const xhr = new XMLHttpRequest(); // is the constructor used to initialize a new instance of the (XHR) object in js
+    xhr.open("GET", requestURL); // method initializes a newly-created request or re-initializes an existing one on an XMLHttpRequest object
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState);//xhr.readyState property returns an integer (from 0 to 4) representing the current status of an XMLHttpRequest lifecycle
+      if (xhr.readyState === 4) {
+        const data = JSON.parse(this.responseText);//a standard js command used to convert a raw JSON string received from a network request into a usable js object or array.
+        console.log(typeof data);
+        console.log(data.followers);
+      }
+    };
+    xhr.send(); //opens the connection and transmits the HTTP request to the server.
+  </script>
+</html>
