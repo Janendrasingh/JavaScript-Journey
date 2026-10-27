@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>async part-2</title>
+    <style>
+      body {
+        background-color: #bedeff;
+        color: #7f5912;
+        text-align: center;
+      }
+
+      #start {
+        background: #4F5B2A;
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 14px 32px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      #start:hover {
+        background: #41d03f;
+        transform: translateY(-2px);
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.3),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      #start:active {
+        transform: translateY(0);
+      }
+
+      #stop {
+        background: #830000;
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 14px 32px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      #stop:hover {
+        background: #d03f3f;
+        transform: translateY(-2px);
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.3),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      #stop:active {
+        transform: translateY(0);
+      }
+
+      .stopWatch{
+        height: 50px;
+        width: 200px;
+        border-radius: 30px;
+        border: #583e0e;
+        border-style: solid dashed dotted solid;
+        background-color: #c9ceb9;
+        position: fixed;
+        left: 39%;
+        top: 23%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Asynchronous JavaScript</h1>
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+    <div class="stopWatch"></div>
+  </body>
+  <script>
+const display = document.querySelector(".stopWatch");
+const startBtn = document.querySelector("#start");
+const stopBtn = document.querySelector("#stop");
+
+let intervalId = null;
+let seconds = 0;
+
+// Display the time on the screen
+const updateDisplay = function () {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+
+  display.innerHTML = `${String(minutes).padStart(2, "0")} : ${String(
+    remainingSeconds
+  ).padStart(2, "0")}`;
+
+  display.style.fontSize = "24px";
+  display.style.paddingTop = "20px";
+};
+
+// Start the stopwatch
+startBtn.addEventListener("click", function () {
+  // Prevent multiple intervals from running simultaneously
+  if (intervalId !== null) {
+    return;
+  }
+
+  intervalId = setInterval(function () {
+    seconds++;
+    updateDisplay();
+  }, 1000);
+});
+
+// Stop the stopwatch
+stopBtn.addEventListener("click", function () {
+  clearInterval(intervalId);
+  intervalId = null;
+});
+
+
+  </script>
+</html>
