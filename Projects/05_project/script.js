@@ -11,7 +11,7 @@ let intervalID
 
 const startChanging = function(){
     if(!intervalID){
-    intervalID = setInterval(bgcolor, 1000);
+    intervalID = setInterval(bgcolor, 100);
     }
 
     function bgcolor(){
